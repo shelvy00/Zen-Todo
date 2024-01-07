@@ -17,8 +17,10 @@ import org.zenmanager.ZenTasks.models.User;
 import java.time.LocalDate;
 import java.util.Optional;
 
-@Controller
-@RequestMapping("")
+//@Controller
+@CrossOrigin(origins = "http://localhost:3000")
+@RestController
+@RequestMapping("api/task")
 public class TaskController {
 
     @Autowired
