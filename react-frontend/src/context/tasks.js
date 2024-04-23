@@ -7,14 +7,14 @@ function Provider({ children }) {
     const [tasks, setTasks] = useState([]);
 
     const fetchTasks = async () => {
-        const response = await axios.get("http://localhost:3001/api/task");
+        const response = await axios.get("http://localhost:8080/api/task");
 
         setTasks(response.data);
     };
 
     const editTaskById = async (id, newTask) => {
 
-        const response = await axios.put(`http://localhost:3001/api/task + ${id}`, {
+        const response = await axios.put(`http://localhost:8080/api/task + ${id}`, {
             title: newTask
         });
 
@@ -30,7 +30,7 @@ function Provider({ children }) {
 
     const deleteTaskById = async (id) => {
 
-        await axios.delete(`http://localhost:3001/api/task + ${id}`);
+        await axios.delete(`http://localhost:8080/api/task + ${id}`);
 
         const updatedTasks = tasks.filter((task) => {
             return task.id !== id;
@@ -40,7 +40,7 @@ function Provider({ children }) {
     };
 
     const createTask = async (title) => {
-        const response = await axios.post("http://localhost:3001/api/task", {
+        const response = await axios.post("http://localhost:8080/api/task", {
             title: title
         });
         
