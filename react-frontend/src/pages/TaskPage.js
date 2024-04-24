@@ -1,5 +1,6 @@
 import React from 'react'
 import { Table, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const TaskPage = () => {
   return (
@@ -21,8 +22,8 @@ const TaskPage = () => {
           <td>5-1-24</td>
           <td>5-3-24</td>
           <td>
-            <Button href="/add-tasks" variant="success" >Edit</Button>{' '}
-            <Button href="/" variant="danger" >Delete</Button>{' '}
+            <Button as={Link} to={`/edit-task`} variant="success" >Edit</Button>{' '}
+            <Button as={Link} to={`/edit-task`} variant="danger" >Delete</Button>{' '}
           </td>  
         </tr>
         <tr>

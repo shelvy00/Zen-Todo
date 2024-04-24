@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
 
 const AddTaskPage = () => {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [startdate, setStartDate] = useState("");
+  const [duedate, setDueDate] = useState("");
+
+
+
   return (
     <div>
       <h1>Add Task</h1>
