@@ -12,10 +12,13 @@ function Provider({ children }) {
         setTasks(response.data);
     };
 
-    const editTaskById = async (id, newTask) => {
+    const editTaskById = async (id, name, description, startDate, dueDate) => {
 
         const response = await axios.put(`http://localhost:8080/api/task + ${id}`, {
-            title: newTask
+            name: name,
+            description: description,
+            startDate: startDate,
+            dueDate: dueDate
         });
 
         const updatedTasks = tasks.map((task) => {
@@ -39,9 +42,12 @@ function Provider({ children }) {
         setTasks(updatedTasks);
     };
 
-    const createTask = async (title) => {
+    const createTask = async (id, name, description, startDate, dueDate) => {
         const response = await axios.post("http://localhost:8080/api/task", {
-            title: title
+            name: name,
+            description: description,
+            startDate: startDate,
+            dueDate: dueDate
         });
         
         const updatedTasks = [
