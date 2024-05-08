@@ -42,8 +42,8 @@ function Provider({ children }) {
         setTasks(updatedTasks);
     };
 
-    const createTask = async (id, name, description, startDate, dueDate) => {
-        const response = await axios.post("http://localhost:8080/api/task", {
+    const createTask = async (name, description, startDate, dueDate) => {
+        const response = await axios.post("/api/task/add", {
             name: name,
             description: description,
             startDate: startDate,
@@ -65,9 +65,9 @@ function Provider({ children }) {
         fetchTasks: fetchTasks
     };
 
-    return <BooksContext.Provider value={valueToShare}>
+    return <TasksContext.Provider value={valueToShare}>
         {children}
-    </BooksContext.Provider>
+    </TasksContext.Provider>
 }
 
 export { Provider }

@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
-import { Form } from 'react-bootstrap'
+import { useState } from 'react';
+import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import useTasksContext from '../hooks/tasks-context';
 
 const AddTaskPage = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [startdate, setStartDate] = useState("");
-  const [duedate, setDueDate] = useState("");
+  const [startdate, setStartDate] = useState(new Date());
+  const [duedate, setDueDate] = useState(new Date());
 
-  const { createTask } = useTasksContext;
+  //const x = useTasksContext();
+
+  const { createTask } = useTasksContext()
+
+  //console.log(x)
 
   const handleChange = (e) => {
     setName(e.target.value);
@@ -17,7 +21,7 @@ const AddTaskPage = () => {
  
    const handleSubmit = (e) => {
      e.preventDefault();
-     createBook(name,description,startdate,duedate);
+     createTask(name,description,startdate,duedate);
      setName("");
      setDescription("");
      setStartDate("");
@@ -32,25 +36,25 @@ const AddTaskPage = () => {
       <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label><h4>Name</h4></Form.Label>
-          <Form.Control size="lg" type="text" placeholder="" />
+          <Form.Control size="lg" type="text" placeholder="" as="input" value={name} onChange={handleChange} />
         </Form.Group>
         <br />  
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
         <Form.Label><h4>Description</h4></Form.Label>
-        <Form.Control as="textarea" rows={3} />
+        <Form.Control as="textarea" rows={3} as="input" value={description} onChange={ (e) => setDescription(e.target.value)} />
       </Form.Group>
         <br />
         <Form.Group>
           <Form.Label><h4>Start Date</h4></Form.Label>
-            <Form.Control size="lg" type="date" ></Form.Control>
+            <Form.Control size="lg" type="date"as="input" value={startdate} onChange={ (e) => setStartDate(e.target.value)}></Form.Control>
         </Form.Group>
         <br />
         <Form.Group>
           <Form.Label><h4>Due Date</h4></Form.Label>
-            <Form.Control size="lg" type="date" ></Form.Control>
+            <Form.Control size="lg" type="date" as="input" value={duedate} onChange={ (e) => setDueDate(e.target.value)}></Form.Control>
         </Form.Group>
         <br />
-        <Button variant="outline-secondary" id="button-addon1" onChange={handleChange}>
+        <Button type="submit" variant="outline-secondary" id="button-addon1" >
           Button
         </Button>
       </Form>
